@@ -4,7 +4,6 @@ node_js:
 install: yarn
 script:
   - yarn build
-  - sh ./script/sync.sh
 addons:
   ssh_known_hosts:
   - guohongtong.com
@@ -12,7 +11,8 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_3d9faca28ce5_key -iv $encrypted_3d9faca28ce5_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 after_success:
-- chmod 600 ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
+  - sh ./script/sync.sh
 env:
   global:
   - secure: WBcjy339dT2UH5GJ7bjDWD0mMID/Iwa5tbowp+pytr5ow64fJdLPcMLH3mGbyKegd3jRL/Ot0tohU+MZY0G+uqA37rj/EfztBTX0LySMo7kIXzQrMU13XV1jxtNteb8H9kwXFO5/ztFZ0jnyJy0FChCVLphJWc8cL9HWpCR2pL4LY+6Wg/3hq/cRqmwNl98xzuyXDM3PjO28xczbMQl0HWKvdPQV89zjm7pJXFHqfujfNmGcVE7DJ3xJVYYVgcExPBdRziyzo2g6B4dt5XK4UCFRSCS9+c/LLERr5w9qX1+BgJtvU2cYCOkn7OIEOSU/REpCp8MwfLdXYIDDzewuLpWm1f8cCqvDgtiNtb0G9fITte/XjNOypLCJjb3D6cidJUDfE5uc68YnQ1jFhmpcNGBIJRPDDcPofD3Qu05gFQ1p0KDYdWUKi58GjagMXfZCy4v2bT8DZHMhWv4r/WwYNdV40bTTf64ix4mqVb8bXIYbc4t0ebmc4vR0S/j3oYKieia+ZdntC77dPI5ewh7AeeTcpYTCiEeN0PISW+Ul1yMxwGpQKAgyGXrRD22njJbpRTKv54OaCb21cXvJzj6XNo7ggJH1E4R0CyfwN9crdAnr+fa4Z0+ckyQqxkDuZXqqY0T/2SsNgbOoX9Gd8XmZoFRNrx4SefxFql3WT2n8Ayo=
